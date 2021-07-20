@@ -115,7 +115,8 @@
 
 (defun (setf verbosity) (value)
   "Set the verbosity level."
-  (gmsk-transfer-set-verbose value))
+  (gmsk-transfer-set-verbose value)
+  value)
 
 (defun make-transfer (&key
                         (radio-driver "") emit file data-callback
