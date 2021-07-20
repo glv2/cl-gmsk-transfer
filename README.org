@@ -91,11 +91,9 @@ Get or set the verbosity level.
 
 #+BEGIN_SRC lisp
 (make-transfer (&key
-                  (radio-driver "") emit file data-callback
-                  callback-context (sample-rate 2000000) (bit-rate 9600)
-                  (frequency 434000000) (frequency-offset 0) (gain 0)
-                  (ppm 0.0) (inner-fec "h128") (outer-fec "none") (id "")
-                  dump)
+                  radio-driver emit file data-callback callback-context
+                  sample-rate bit-rate frequency frequency-offset gain
+                  ppm inner-fec outer-fec id dump)
 => foreign pointer
 #+END_SRC
 
