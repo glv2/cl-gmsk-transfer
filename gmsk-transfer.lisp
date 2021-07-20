@@ -199,8 +199,8 @@
                                  :outer-fec outer-fec
                                  :id id
                                  :dump dump)))
-    (unwind-protect (gmsk-transfer-start transfer)
-      (gmsk-transfer-free transfer))
+    (unwind-protect (start-transfer transfer)
+      (free-transfer transfer))
     t))
 
 (defun receive-file (file
@@ -223,8 +223,8 @@
                                  :outer-fec outer-fec
                                  :id id
                                  :dump dump)))
-    (unwind-protect (gmsk-transfer-start transfer)
-      (gmsk-transfer-free transfer))
+    (unwind-protect (start-transfer transfer)
+      (free-transfer transfer))
     t))
 
 (defparameter *data-stream* nil)
@@ -294,8 +294,8 @@
                                   :outer-fec outer-fec
                                   :id id
                                   :dump dump)))
-    (unwind-protect (gmsk-transfer-start transfer)
-      (gmsk-transfer-free transfer))
+    (unwind-protect (start-transfer transfer)
+      (free-transfer transfer))
     t))
 
 (defun receive-stream (stream
@@ -322,6 +322,6 @@
                                   :outer-fec outer-fec
                                   :id id
                                   :dump dump)))
-    (unwind-protect (gmsk-transfer-start transfer)
-      (gmsk-transfer-free transfer))
+    (unwind-protect (start-transfer transfer)
+      (free-transfer transfer))
     t))
