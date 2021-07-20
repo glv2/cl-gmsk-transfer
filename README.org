@@ -1,0 +1,130 @@
+#+TITLE: gmsk-transfer
+#+AUTHOR: Guillaume LE VAILLANT
+#+DATE: 2021-07-20
+#+EMAIL: glv@posteo.net
+#+LANGUAGE: en
+#+OPTIONS: num:nil toc:nil html-postamble:nil html-scripts:nil
+#+HTML_DOCTYPE: html5
+
+* Description
+
+*gmsk-transfer* is a Common Lisp library to send or receive data by software
+defined radio using the GMSK modulation. It uses bindings to the
+libgmsk-transfer C library.
+
+* License
+
+*gmsk-transfer* is released under the GPL-3 license or later. See the
+[[file:LICENSE][LICENSE]] file for details.
+
+* Dependencies
+
+*gmsk-transfer* requires:
+ - [[https://common-lisp.net/project/cffi/][cffi]]
+ - [[https://github.com/glv2/gmsk-transfer][libgmsk-transfer]]
+
+The tests also require:
+ - [[https://common-lisp.net/project/fiveam/][fiveam]]
+
+* API
+
+After loading the library with ~(asdf:load-system "gmsk-transfer")~ or
+~(quicklisp:quickload "gmsk-transfer")~, the functions will be available
+in the ~gmsk-transfer~ package.
+
+** High level
+
+The key parameters of the following functions match the ones described in
+[[https://github.com/glv2/gmsk-transfer/blob/master/README][gmsk-transfer/README]].
+
+#+BEGIN_SRC lisp
+(transmit-file file
+               &key
+                 radio-driver sample-rate bit-rate frequency frequency-offset
+                 gain ppm inner-fec outer-fec id dump)
+=> T
+#+END_SRC
+
+Transmit the data from /file/.
+
+#+BEGIN_SRC lisp
+(receive-file file
+              &key
+                radio-driver sample-rate bit-rate frequency frequency-offset
+                gain ppm inner-fec outer-fec id dump)
+=> T
+#+END_SRC
+
+Receive data into /file/.
+
+#+BEGIN_SRC lisp
+(transmit-stream stream
+                 &key
+                   radio-driver sample-rate bit-rate frequency frequency-offset
+                   gain ppm inner-fec outer-fec id dump)
+=> T
+#+END_SRC
+
+Transmit the data from /stream/.
+
+#+BEGIN_SRC lisp
+(receive-stream stream
+                &key
+                  radio-driver sample-rate bit-rate frequency frequency-offset
+                  gain ppm inner-fec outer-fec id dump)
+=> T
+#+END_SRC
+
+Receive data into /stream/.
+
+** Low level
+
+#+BEGIN_SRC lisp
+(verbosity)
+=> integer
+
+(setf (verbosity) value)
+ => integer
+#+END_SRC
+
+Get or set the verbosity level.
+
+#+BEGIN_SRC lisp
+(make-transfer (&key
+                  (radio-driver "") emit file data-callback
+                  callback-context (sample-rate 2000000) (bit-rate 9600)
+                  (frequency 434000000) (frequency-offset 0) (gain 0)
+                  (ppm 0.0) (inner-fec "h128") (outer-fec "none") (id "")
+                  dump)
+=> foreign pointer
+#+END_SRC
+
+Initialize a transfer.
+
+#+BEGIN_SRC lisp
+(free-transfer transfer)
+#+END_SRC
+
+Cleanup after a finished transfer.
+
+#+BEGIN_SRC lisp
+(start-transfer transfer)
+#+END_SRC
+
+Start a transfer and return when finished.
+
+#+BEGIN_SRC lisp
+(stop-transfer transfer)
+#+END_SRC
+
+Interrupt a transfer.
+
+#+BEGIN_SRC lisp
+(stop-all-transfers transfer)
+#+END_SRC
+
+Interrupt all transfers.
+
+* Tests
+
+The tests can be run with ~(asdf:test-system "gmsk-transfer")~.
