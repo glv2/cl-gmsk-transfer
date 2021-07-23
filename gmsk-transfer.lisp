@@ -131,7 +131,7 @@
   (let ((transfer (if file
                       (gmsk-transfer-create radio-driver
                                             (if emit 1 0)
-                                            file
+                                            (namestring file)
                                             sample-rate
                                             bit-rate
                                             frequency
@@ -141,7 +141,8 @@
                                             inner-fec
                                             outer-fec
                                             id
-                                            (or dump
+                                            (if dump
+                                                (namestring dump)
                                                 (null-pointer)))
                       (gmsk-transfer-create-callback radio-driver
                                                      (if emit 1 0)
@@ -157,7 +158,8 @@
                                                      inner-fec
                                                      outer-fec
                                                      id
-                                                     (or dump
+                                                     (if dump
+                                                         (namestring dump)
                                                          (null-pointer))))))
     (if (null-pointer-p transfer)
         (error "Failed to initialize transfer.")
