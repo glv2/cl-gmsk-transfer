@@ -62,6 +62,7 @@
   (frequency-offset :long)
   (gain :unsigned-int)
   (ppm :float)
+  (bt :float)
   (inner-fec :string)
   (outer-fec :string)
   (id :string)
@@ -79,6 +80,7 @@
   (frequency-offset :long)
   (gain :unsigned-int)
   (ppm :float)
+  (bt :float)
   (inner-fec :string)
   (outer-fec :string)
   (id :string)
@@ -127,8 +129,8 @@
                         (radio-driver "") emit file data-callback
                         callback-context (sample-rate 2000000) (bit-rate 9600)
                         (frequency 434000000) (frequency-offset 0) (gain 0)
-                        (ppm 0.0) (inner-fec "h128") (outer-fec "none") (id "")
-                        dump)
+                        (ppm 0.0) (bt 0.5) (inner-fec "h128") (outer-fec "none")
+                        (id "") dump)
   "Initialize a transfer."
   (when (or (and file data-callback)
             (and (not file) (not data-callback)))
@@ -143,6 +145,7 @@
                                             frequency-offset
                                             gain
                                             ppm
+                                            bt
                                             inner-fec
                                             outer-fec
                                             id
@@ -160,6 +163,7 @@
                                                      frequency-offset
                                                      gain
                                                      ppm
+                                                     bt
                                                      inner-fec
                                                      outer-fec
                                                      id
@@ -190,8 +194,8 @@
                       &key
                         (radio-driver "") (sample-rate 2000000) (bit-rate 9600)
                         (frequency 434000000) (frequency-offset 0) (gain 0)
-                        (ppm 0.0) (inner-fec "h128") (outer-fec "none") (id "")
-                        dump)
+                        (ppm 0.0) (bt 0.5) (inner-fec "h128") (outer-fec "none")
+                        (id "") dump)
   "Transmit the data from FILE."
   (let ((transfer (make-transfer :emit t
                                  :file file
@@ -202,6 +206,7 @@
                                  :frequency-offset frequency-offset
                                  :gain gain
                                  :ppm ppm
+                                 :bt bt
                                  :inner-fec inner-fec
                                  :outer-fec outer-fec
                                  :id id
@@ -214,8 +219,8 @@
                      &key
                        (radio-driver "") (sample-rate 2000000) (bit-rate 9600)
                        (frequency 434000000) (frequency-offset 0) (gain 0)
-                       (ppm 0.0) (inner-fec "h128") (outer-fec "none") (id "")
-                       dump)
+                       (ppm 0.0) (bt 0.5) (inner-fec "h128") (outer-fec "none")
+                       (id "") dump)
   "Receive data into FILE."
   (let ((transfer (make-transfer :emit nil
                                  :file file
@@ -226,6 +231,7 @@
                                  :frequency-offset frequency-offset
                                  :gain gain
                                  :ppm ppm
+                                 :bt bt
                                  :inner-fec inner-fec
                                  :outer-fec outer-fec
                                  :id id
@@ -281,7 +287,7 @@
                         &key
                           (radio-driver "") (sample-rate 2000000)
                           (bit-rate 9600) (frequency 434000000)
-                          (frequency-offset 0) (gain 0) (ppm 0.0)
+                          (frequency-offset 0) (gain 0) (ppm 0.0) (bt 0.5)
                           (inner-fec "h128") (outer-fec "none") (id "")
                           dump)
   "Transmit the data from STREAM."
@@ -297,6 +303,7 @@
                                   :frequency-offset frequency-offset
                                   :gain gain
                                   :ppm ppm
+                                  :bt bt
                                   :inner-fec inner-fec
                                   :outer-fec outer-fec
                                   :id id
@@ -309,7 +316,7 @@
                        &key
                          (radio-driver "") (sample-rate 2000000)
                          (bit-rate 9600) (frequency 434000000)
-                         (frequency-offset 0) (gain 0) (ppm 0.0)
+                         (frequency-offset 0) (gain 0) (ppm 0.0) (bt 0.5)
                          (inner-fec "h128") (outer-fec "none") (id "")
                          dump)
   "Receive data to STREAM."
@@ -325,6 +332,7 @@
                                   :frequency-offset frequency-offset
                                   :gain gain
                                   :ppm ppm
+                                  :bt bt
                                   :inner-fec inner-fec
                                   :outer-fec outer-fec
                                   :id id
@@ -337,7 +345,7 @@
                         &key
                           (start 0) end (radio-driver "") (sample-rate 2000000)
                           (bit-rate 9600) (frequency 434000000)
-                          (frequency-offset 0) (gain 0) (ppm 0.0)
+                          (frequency-offset 0) (gain 0) (ppm 0.0) (bt 0.5)
                           (inner-fec "h128") (outer-fec "none") (id "")
                           dump)
   "Transmit the data between START and END in BUFFER."
@@ -350,6 +358,7 @@
                      :frequency-offset frequency-offset
                      :gain gain
                      :ppm ppm
+                     :bt bt
                      :inner-fec inner-fec
                      :outer-fec outer-fec
                      :id id
@@ -358,7 +367,7 @@
 (defun receive-buffer (&key
                          (radio-driver "") (sample-rate 2000000)
                          (bit-rate 9600) (frequency 434000000)
-                         (frequency-offset 0) (gain 0) (ppm 0.0)
+                         (frequency-offset 0) (gain 0) (ppm 0.0) (bt 0.5)
                          (inner-fec "h128") (outer-fec "none") (id "")
                          dump)
   "Receive data into a new octet vector and return it."
@@ -371,6 +380,7 @@
                     :frequency-offset frequency-offset
                     :gain gain
                     :ppm ppm
+                    :bt bt
                     :inner-fec inner-fec
                     :outer-fec outer-fec
                     :id id

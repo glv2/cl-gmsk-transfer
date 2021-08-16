@@ -42,7 +42,7 @@ The key parameters of the following functions match the ones described in
 (transmit-file file
                &key
                  radio-driver sample-rate bit-rate frequency frequency-offset
-                 gain ppm inner-fec outer-fec id dump)
+                 gain ppm bt inner-fec outer-fec id dump)
 => T
 #+END_SRC
 
@@ -52,7 +52,7 @@ Transmit the data from /file/.
 (receive-file file
               &key
                 radio-driver sample-rate bit-rate frequency frequency-offset
-                gain ppm inner-fec outer-fec id dump)
+                gain ppm bt inner-fec outer-fec id dump)
 => T
 #+END_SRC
 
@@ -62,7 +62,7 @@ Receive data into /file/.
 (transmit-stream stream
                  &key
                    radio-driver sample-rate bit-rate frequency frequency-offset
-                   gain ppm inner-fec outer-fec id dump)
+                   gain ppm bt inner-fec outer-fec id dump)
 => T
 #+END_SRC
 
@@ -72,7 +72,7 @@ Transmit the data from /stream/.
 (receive-stream stream
                 &key
                   radio-driver sample-rate bit-rate frequency frequency-offset
-                  gain ppm inner-fec outer-fec id dump)
+                  gain ppm bt inner-fec outer-fec id dump)
 => T
 #+END_SRC
 
@@ -82,7 +82,7 @@ Receive data into /stream/.
 (transmit-buffer buffer
                  &key
                    start end radio-driver sample-rate bit-rate frequency
-                   frequency-offset gain ppm inner-fec outer-fec id dump)
+                   frequency-offset gain ppm bt inner-fec outer-fec id dump)
 => T
 #+END_SRC
 
@@ -91,7 +91,7 @@ Transmit the data between /start/ and /end/ in /buffer/.
 #+BEGIN_SRC lisp
 (receive-buffer &key
                   radio-driver sample-rate bit-rate frequency frequency-offset
-                  gain ppm inner-fec outer-fec id dump)
+                  gain ppm bt inner-fec outer-fec id dump)
 => bytes
 #+END_SRC
 
@@ -113,7 +113,7 @@ Get or set the verbosity level.
 (make-transfer (&key
                   radio-driver emit file data-callback callback-context
                   sample-rate bit-rate frequency frequency-offset gain
-                  ppm inner-fec outer-fec id dump)
+                  ppm bt inner-fec outer-fec id dump)
 => foreign pointer
 #+END_SRC
 
