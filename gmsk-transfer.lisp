@@ -181,7 +181,8 @@
 
 (defun start-transfer (transfer)
   "Start a transfer and return when finished."
-  (gmsk-transfer-start transfer))
+  (float-features:with-float-traps-masked t
+    (gmsk-transfer-start transfer)))
 
 (defun stop-transfer (transfer)
   "Interrupt a transfer."
