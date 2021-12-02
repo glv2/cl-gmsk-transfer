@@ -53,7 +53,7 @@ Transmit the data from /file/.
 (receive-file file
               &key
                 radio-driver sample-rate bit-rate frequency frequency-offset
-                gain ppm bt inner-fec outer-fec id dump)
+                gain ppm bt inner-fec outer-fec id dump timeout)
 => T
 #+END_SRC
 
@@ -73,7 +73,7 @@ Transmit the data from /stream/.
 (receive-stream stream
                 &key
                   radio-driver sample-rate bit-rate frequency frequency-offset
-                  gain ppm bt inner-fec outer-fec id dump)
+                  gain ppm bt inner-fec outer-fec id dump timeout)
 => T
 #+END_SRC
 
@@ -93,7 +93,7 @@ Transmit the data between /start/ and /end/ in /buffer/.
 #+BEGIN_SRC lisp
 (receive-buffer &key
                   radio-driver sample-rate bit-rate frequency frequency-offset
-                  gain ppm bt inner-fec outer-fec id dump)
+                  gain ppm bt inner-fec outer-fec id dump timeout)
 => bytes
 #+END_SRC
 
@@ -103,7 +103,7 @@ Receive data into a new octet vector and return it.
 (receive-callback function
                   &key
                     radio-driver sample-rate bit-rate frequency frequency-offset
-                    gain ppm bt inner-fec outer-fec id dump)
+                    gain ppm bt inner-fec outer-fec id dump timeout)
   => bytes
 #+END_SRC
 
@@ -126,7 +126,7 @@ Get or set the verbosity level.
 (make-transfer (&key
                   radio-driver emit file data-callback callback-context
                   sample-rate bit-rate frequency frequency-offset gain
-                  ppm bt inner-fec outer-fec id dump)
+                  ppm bt inner-fec outer-fec id dump timeout)
 => foreign pointer
 #+END_SRC
 
