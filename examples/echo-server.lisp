@@ -44,7 +44,8 @@
                                  :bit-rate *bit-rate*
                                  :bt *bt*
                                  :inner-fec *inner-fec*
-                                 :outer-fec *outer-fec*))
+                                 :outer-fec *outer-fec*
+                                 :final-delay 1))
 
 (defun receive (callback frequency)
   (gmsk-transfer:receive-callback callback

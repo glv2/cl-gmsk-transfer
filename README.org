@@ -43,7 +43,7 @@ The key parameters of the following functions match the ones described in
 (transmit-file file
                &key
                  radio-driver sample-rate bit-rate frequency frequency-offset
-                 gain ppm bt inner-fec outer-fec id dump)
+                 gain ppm bt inner-fec outer-fec id dump final-delay)
 => T
 #+END_SRC
 
@@ -63,7 +63,7 @@ Receive data into /file/.
 (transmit-stream stream
                  &key
                    radio-driver sample-rate bit-rate frequency frequency-offset
-                   gain ppm bt inner-fec outer-fec id dump)
+                   gain ppm bt inner-fec outer-fec id dump final-delay)
 => T
 #+END_SRC
 
@@ -83,7 +83,8 @@ Receive data into /stream/.
 (transmit-buffer buffer
                  &key
                    start end radio-driver sample-rate bit-rate frequency
-                   frequency-offset gain ppm bt inner-fec outer-fec id dump)
+                   frequency-offset gain ppm bt inner-fec outer-fec id dump
+                   final-delay)
 => T
 #+END_SRC
 
