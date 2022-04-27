@@ -61,6 +61,7 @@
   (bit-rate :unsigned-int)
   (frequency :unsigned-long)
   (frequency-offset :long)
+  (maximum-deviation :unsigned-int)
   (gain :unsigned-int)
   (ppm :float)
   (bt :float)
@@ -81,6 +82,7 @@
   (bit-rate :unsigned-int)
   (frequency :unsigned-long)
   (frequency-offset :long)
+  (maximum-deviation :unsigned-int)
   (gain :unsigned-int)
   (ppm :float)
   (bt :float)
@@ -134,6 +136,7 @@
                         (radio-driver "") emit file data-callback
                         callback-context (sample-rate 2000000) (bit-rate 9600)
                         (frequency 434000000) (frequency-offset 0) (gain 0)
+                        (maximum-deviation (/ bit-rate 100))
                         (ppm 0.0) (bt 0.5) (inner-fec "h128") (outer-fec "none")
                         (id "") dump timeout audio)
   "Initialize a transfer."
@@ -148,6 +151,7 @@
                                             bit-rate
                                             frequency
                                             frequency-offset
+                                            maximum-deviation
                                             gain
                                             ppm
                                             bt
@@ -168,6 +172,7 @@
                                                      bit-rate
                                                      frequency
                                                      frequency-offset
+                                                     maximum-deviation
                                                      gain
                                                      ppm
                                                      bt
@@ -234,6 +239,7 @@
                      &key
                        (radio-driver "") (sample-rate 2000000) (bit-rate 9600)
                        (frequency 434000000) (frequency-offset 0) (gain 0)
+                       (maximum-deviation (/ bit-rate 100))
                        (ppm 0.0) (bt 0.5) (inner-fec "h128") (outer-fec "none")
                        (id "") dump timeout audio)
   "Receive data into FILE."
@@ -244,6 +250,7 @@
                                  :bit-rate bit-rate
                                  :frequency frequency
                                  :frequency-offset frequency-offset
+                                 :maximum-deviation maximum-deviation
                                  :gain gain
                                  :ppm ppm
                                  :bt bt
@@ -339,6 +346,7 @@
                          (radio-driver "") (sample-rate 2000000)
                          (bit-rate 9600) (frequency 434000000)
                          (frequency-offset 0) (gain 0) (ppm 0.0) (bt 0.5)
+                         (maximum-deviation (/ bit-rate 100))
                          (inner-fec "h128") (outer-fec "none") (id "")
                          dump timeout audio)
   "Receive data to STREAM."
@@ -352,6 +360,7 @@
                                   :bit-rate bit-rate
                                   :frequency frequency
                                   :frequency-offset frequency-offset
+                                  :maximum-deviation maximum-deviation
                                   :gain gain
                                   :ppm ppm
                                   :bt bt
@@ -394,6 +403,7 @@
                          (radio-driver "") (sample-rate 2000000)
                          (bit-rate 9600) (frequency 434000000)
                          (frequency-offset 0) (gain 0) (ppm 0.0) (bt 0.5)
+                         (maximum-deviation (/ bit-rate 100))
                          (inner-fec "h128") (outer-fec "none") (id "")
                          dump timeout audio)
   "Receive data into a new octet vector and return it."
@@ -404,6 +414,7 @@
                     :bit-rate bit-rate
                     :frequency frequency
                     :frequency-offset frequency-offset
+                    :maximum-deviation maximum-deviation
                     :gain gain
                     :ppm ppm
                     :bt bt
@@ -434,6 +445,7 @@
                            (radio-driver "") (sample-rate 2000000)
                            (bit-rate 9600) (frequency 434000000)
                            (frequency-offset 0) (gain 0) (ppm 0.0) (bt 0.5)
+                           (maximum-deviation (/ bit-rate 100))
                            (inner-fec "h128") (outer-fec "none") (id "")
                            dump timeout audio)
   "Receive data and call a FUNCTION on it. The FUNCTION must take one octet
@@ -447,6 +459,7 @@ vector as argument."
                                   :bit-rate bit-rate
                                   :frequency frequency
                                   :frequency-offset frequency-offset
+                                  :maximum-deviation maximum-deviation
                                   :gain gain
                                   :ppm ppm
                                   :bt bt
