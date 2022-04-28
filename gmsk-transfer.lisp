@@ -62,7 +62,7 @@
   (frequency :unsigned-long)
   (frequency-offset :long)
   (maximum-deviation :unsigned-int)
-  (gain :unsigned-int)
+  (gain :string)
   (ppm :float)
   (bt :float)
   (inner-fec :string)
@@ -83,7 +83,7 @@
   (frequency :unsigned-long)
   (frequency-offset :long)
   (maximum-deviation :unsigned-int)
-  (gain :unsigned-int)
+  (gain :string)
   (ppm :float)
   (bt :float)
   (inner-fec :string)
@@ -152,7 +152,9 @@
                                             frequency
                                             frequency-offset
                                             maximum-deviation
-                                            gain
+                                            (if (stringp gain)
+                                                gain
+                                                (format nil "~d" gain))
                                             ppm
                                             bt
                                             inner-fec
@@ -173,7 +175,9 @@
                                                      frequency
                                                      frequency-offset
                                                      maximum-deviation
-                                                     gain
+                                                     (if (stringp gain)
+                                                         gain
+                                                         (format nil "~d" gain))
                                                      ppm
                                                      bt
                                                      inner-fec
