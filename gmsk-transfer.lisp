@@ -136,7 +136,7 @@
                         (radio-driver "") emit file data-callback
                         callback-context (sample-rate 2000000) (bit-rate 9600)
                         (frequency 434000000) (frequency-offset 0) (gain 0)
-                        (maximum-deviation (/ bit-rate 100))
+                        (maximum-deviation (ceiling bit-rate 100))
                         (ppm 0.0) (bt 0.5) (inner-fec "h128") (outer-fec "none")
                         (id "") dump timeout audio)
   "Initialize a transfer."
@@ -243,7 +243,7 @@
                      &key
                        (radio-driver "") (sample-rate 2000000) (bit-rate 9600)
                        (frequency 434000000) (frequency-offset 0) (gain 0)
-                       (maximum-deviation (/ bit-rate 100))
+                       (maximum-deviation (ceiling bit-rate 100))
                        (ppm 0.0) (bt 0.5) (inner-fec "h128") (outer-fec "none")
                        (id "") dump timeout audio)
   "Receive data into FILE."
@@ -350,7 +350,7 @@
                          (radio-driver "") (sample-rate 2000000)
                          (bit-rate 9600) (frequency 434000000)
                          (frequency-offset 0) (gain 0) (ppm 0.0) (bt 0.5)
-                         (maximum-deviation (/ bit-rate 100))
+                         (maximum-deviation (ceiling bit-rate 100))
                          (inner-fec "h128") (outer-fec "none") (id "")
                          dump timeout audio)
   "Receive data to STREAM."
@@ -407,7 +407,7 @@
                          (radio-driver "") (sample-rate 2000000)
                          (bit-rate 9600) (frequency 434000000)
                          (frequency-offset 0) (gain 0) (ppm 0.0) (bt 0.5)
-                         (maximum-deviation (/ bit-rate 100))
+                         (maximum-deviation (ceiling bit-rate 100))
                          (inner-fec "h128") (outer-fec "none") (id "")
                          dump timeout audio)
   "Receive data into a new octet vector and return it."
@@ -449,7 +449,7 @@
                            (radio-driver "") (sample-rate 2000000)
                            (bit-rate 9600) (frequency 434000000)
                            (frequency-offset 0) (gain 0) (ppm 0.0) (bt 0.5)
-                           (maximum-deviation (/ bit-rate 100))
+                           (maximum-deviation (ceiling bit-rate 100))
                            (inner-fec "h128") (outer-fec "none") (id "")
                            dump timeout audio)
   "Receive data and call a FUNCTION on it. The FUNCTION must take one octet
